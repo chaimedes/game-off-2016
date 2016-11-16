@@ -1,0 +1,143 @@
+<doctype html>
+<html>
+<head>
+<script src='cyo-master/bower_components/angular/angular.min.js'></script>
+<script src='cyo-master/js/cyo.js'></script>
+<script src='https://code.jquery.com/jquery-1.12.4.min.js'></script>
+<script>
+$(document).ready(function() {
+$(".startit").hide();
+$(".shell-body button").click(function(e) {
+	$("body").scrollTop($(e.target).offset().top + $(window).height());
+});
+$("body").keypress(function( event ) {
+	if ( event.which == 13 ) {
+		event.preventDefault();
+		$(".startit").trigger("click");
+		$("body").scrollTop($(".startit").offset().top + $(window).height());
+	}
+});
+});
+</script>
+<!-- <link href="cyo-master/lib/prism.css" rel="stylesheet" /> -->
+<link href="shellcss.css" rel="stylesheet" />
+<script src="cyo-master/lib/prism.js"></script>
+</head>
+<body ng-app="cyo" class='container'>
+<div class="shell-wrap">
+<h2 class="shell-top-bar">user1@shell: ~/augments.game</h2>
+<story>
+	<div class="shell-body">
+	
+	<!-- Start -->
+	<page pre class="startpage">
+		<p>Welcome to Augments, a game of changes.</p>
+		<p>This game contains descriptions of violence and occasional disturbing images; proceed with this knowledge at your own risk.
+		<p>Press <span class="command">&ltenter&gt</span> to begin.</p>
+		<button choice start class="startit">Start</button>
+	</page>
+	
+	<!-- First scene -->
+	<page start>
+		<img src="forest.jpg" />
+		<p>It's a beautiful autumn day. You're walking alone through the woods, thinking.</p>
+		<p>Suddenly, you get an eerie feeling, and a voice speaks as if from nowhere, whispering "<span class="bloody">...go home, go home, go home...</span>"</p>
+		<p>Disembodied voices are creepy, but are they creepy enough to pay attention to?</p>
+		<button choice stay-put>I'm not leaving just because some random voice says to!</button>
+		<button choice go-home>I want to play it safe -- let's go home!</button>
+	</page>
+	
+	<!-- First scene => stay -->
+	<page stay-put>
+		<img src="spider.png" />
+		<p>Just as you decide not to leave, a giant, horrid, mechanical spider lunges out at you from behind a nearby bush.</p>	
+		<button choice wait-spider>Wait to see what the spider does...</button>
+		<button choice fight-spider>Fight him!</button>
+	</page>
+	
+	<!-- Stay => wait for spider -->
+	<page wait-spider>
+		<img src="dead1.jpg" />
+		<p>The horrible, deadly spider stabs at you with sharp mechanical pincers, slicing through your abdomin. You struggle, but bleed to death in moments.</p>
+		<p>That was a poor choice.</p>
+		<p>Giant mechanical spiders deserve caution.</p>
+		<button restart>Would you care to try again?</button>
+	</page>
+	
+	<!-- Stay => fight spider -->
+	<page fight-spider>
+		<img src="hand-point.jpg" />
+		<p>You raise your arm, ready to fire -- but suddenly realize your projectile arm is still at home, in your closet. You are unarmed. What should you do?</p>
+		<button choice run-spider>Run, runnn, runnnnnn!</button>
+		<button choice rock-spider>Pick up a nearby rock to throw -- gotta try something.</button>
+	</page>
+	
+	<!-- Fight spider => rock -->
+	<page rock-spider>
+		<event got-rock></event>
+		<p>You pick up a large rock nearby and prepare to heave it at the beast -- but as soon as the spider sees the rock, it flees, scurrying quickly through the brush down the path, soon veering off and crashing deep into the woods in the distance.</p>
+		<button choice run-spider>Run, runnn, runnnnnn!</button>
+		<button choice rock-spider>Pick up a nearby rock to throw -- gotta try something.</button>
+	</page>
+	
+<page go-home>
+<p>You returned home uneventfully.</p>
+<p>Well, you may never understand what happened in the woods today, but at least you're safe and sound!</p>
+<p>For now....</p>
+<button restart>Play again?</button>
+<button choice introduce>Introduce yourself.</button>
+<condition got-flute>
+<button choice play-flute>Play the flute.</button>
+</condition>
+</page>
+<page talk-to-owl>
+<p>For a while you talk to the owl. It seems to ignore you. Suddenly, it cocks its head towards a hollow in an old tree.</p>
+<p>You reach inside, and pull out a mysterious wooden flute.</p>
+<event got-flute></event>
+<p>"Hmm, now I've seen everything".</p>
+<button choice taunt-owl>I ought to taunt that preposterous owl.</button>
+<button choice look-around>Let's get moving.</button>
+</page>
+<page taunt-owl>
+<p>One thing about yourself that you know for sure - you hate owls/</p>
+<p>"Hey! Owl! You're stupid-looking!"</p>
+<p>The owl cocks its head at you bemusedly.</p>
+<p>What a stupid owl, you laugh.</p>
+<p>Suddenly, the owl swoops down and carries you off. It is a big owl indeed.</p>
+<p><i>You are never seen again.</i>
+</p>
+<button restart>Play again?</button>
+</page>
+<page investigate-rocks>
+<p>You walk up to the pile of rocks.</p>
+<p>It's just a pile of rocks, you think.</p>
+<button choice look-around>Let's get out of here.</button>
+</page>
+<page check-tree-out>
+<p>You walk up to the tree. You reckon it to be mighty old. Maybe a bazillion years or more. You notice a strange carving on the tree.</p>
+<p>The carving depicts a great monster, twenty feet tall or more.</p>
+<p>"Pshh. A huge monster, have you ever heard anything so ridiculous, Smeemog? ... Smee?"</p>
+<p>You turn around, but in fact Smeemog has been eaten by a giant monster.</p>
+<p>The monster devours you as you beg for mercy.</p>
+<button restart>Play again?</button>
+</page>
+<page play-flute>
+<p>You play the flute, and the troll disappears in a cloud of smoke.</p>
+<p>"I'll get you, Owl!" he curses.</p>
+<p>You and Smeemog escape the forest safely.</p>
+<p><i>You win!</i>
+</p>
+<button restart>Play again?</button>
+</page>
+<page introduce>
+<p>"It is we," you say.</p>
+<p>"I care not who ye are! I demand yer bones as payment for trespassin'."</p>
+<p><i>You're boned!</i>
+</p>
+<button restart>Play again?</button>
+</page>  
+</div>      
+</story>
+</div>
+</body>
+</html>
