@@ -1,6 +1,32 @@
 body {
 	background: #333;
 	background: #3F2621;
+	margin: 0px;
+	padding: 0px;
+}
+#top {
+	width: 100%;
+	padding: 10px 0px;
+	text-align: center;
+	background: #903d3d;
+	background: #d5d5d5;
+	box-shadow: 0px 5px 3px -3px rgba(0,0,0,0.5);
+	font: 3em 'Andale Mono', Consolas, 'Courier New';
+	font-variant: small-caps;
+	text-transform: lowercase;
+	color: #000;
+	margin: 0px auto 20px auto;
+}
+.dark {
+	color: #333;
+}
+.lighter {
+	color: #aaa;
+	font-size: 0.3em;
+}
+.lightest {
+	color: #777;
+	font-size: 0.6em;
 }
 .shell-wrap {
   width: 50%;
@@ -81,6 +107,14 @@ body {
 .shell-body .bloody {
 	color: crimson;
 }
+.shell-body .super {
+	font-size: 1.4em;
+	font-variant: small-caps;
+	text-transform: lowercase;
+}
 .shell-body .command {
 	color: goldenrod;
+}
+.shell-body .alert {
+	color: mediumslateblue;
 }
