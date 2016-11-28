@@ -34,12 +34,12 @@ $("body").keypress(function( event ) {
 	
 	<!-- L1 First scene -->
 	<page start>
-		<img src="intro1b.jpg" />
+		<img src="images\intro1b.jpg" />
 		<p class="super">Welcome to Augments, a game of changes.</p>
 		<p>This game contains disturbing images and descriptions of violence; proceed at your own risk.</p>
 		<p>Press <span class="command">&ltenter&gt</span> to begin.</p>
 		<div class="startit">
-			<img src="forest.jpg" />
+			<img src="images\forest.jpg" />
 			<p>It's a beautiful autumn day. You're walking alone through the woods, thinking.</p>
 			<p>Suddenly, you get an eerie feeling, and a voice speaks as if from nowhere, whispering "<span class="bloody">...go home, go home, go home...</span>"</p>
 			<p>Disembodied voices are creepy, but are they creepy enough to pay attention to?</p>
@@ -50,7 +50,7 @@ $("body").keypress(function( event ) {
 	
 	<!-- L2 First scene => stay -->
 	<page stay-put>
-		<img src="spider.png" />
+		<img src="images\spider.png" />
 		<p>Just as you decide not to leave, a giant, horrid, mechanical spider lunges out at you from behind a nearby bush.</p>	
 		<button choice wait-spider>Wait to see what the spider does...</button>
 		<button choice fight-spider>Fight him!</button>
@@ -58,7 +58,7 @@ $("body").keypress(function( event ) {
 	
 	<!-- L3 First scene => stay => wait for spider -->
 	<page wait-spider>
-		<img src="dead1.jpg" />
+		<img src="images\dead1.jpg" />
 		<p>The horrible, deadly spider stabs at you with sharp mechanical pincers, slicing through your abdomin. You struggle, but bleed to death in moments.</p>
 		<p>That was a poor choice.</p>
 		<p>Giant mechanical spiders deserve caution.</p>
@@ -67,7 +67,7 @@ $("body").keypress(function( event ) {
 	
 	<!-- L3 First scene => stay => fight spider -->
 	<page fight-spider>
-		<img src="hand-point.png" />
+		<img src="images\hand-point.png" />
 		<p>You raise your arm, ready to fire -- but suddenly realize your projectile arm is still at home, in your closet. You are unarmed. What should you do?</p>
 		<button choice run-spider>Run, runnn, runnnnnn!</button>
 		<button choice rock-spider>Pick up a nearby rock to throw -- gotta try something.</button>
@@ -113,7 +113,7 @@ $("body").keypress(function( event ) {
 		<condition got-augment>With your strength and the aid of your stolen augment, you wreak havoc in the barricade, and nearly reach the far wall.</p></condition>
 		<p>But a pair of workers some distance away has taken advantage of the tussle to ready a response -- a small projectile launcher has been rotated to face you, and now they fire it.</p>
 		<p>There is a dull "whump" as a grenade leaves the tube, strikes you, and detonates....</p>
-		<img src="fire.jpg" />
+		<img src="images\fire.jpg" />
 		<p>You are dead (clearly).</p>
 		<button restart>Try again?</button>
 	</page>
@@ -123,7 +123,7 @@ $("body").keypress(function( event ) {
 	<page wait-woods>
 		<p>You crouch there, under cover of the trees and bushes, and watch the workers at their fantastic construction. Clearly, the longer this goes on, the harder it's going to be to get through. Or maybe there's another way out?</p>
 		<p>As you ponder, you fail to observe that you have been noticed. A man wielding a strange, bulky device and a long, metal arm creeps up behind you. The last sound you hear is FWOOSH --</p>
-		<img src="fire.jpg" />
+		<img src="images\fire.jpg" />
 		<p>Okay, maybe waiting was a poor choice in such dangerous woods.</p>
 		<button restart>Try again?</button>
 	</page>
@@ -146,7 +146,7 @@ $("body").keypress(function( event ) {
 		<p>You don't have many options, though, so you keep going. The noises around you grow louder, and you begin to hear periodic crunching, as though the leaves around you are underfoot of numerous creatures bustling to and fro. It's growing dark, and the fear begins to rise within you. You slow to a crawl, peering around you as you plunge on.</p>
 		<p>Darkness finally falls, and you are well and truly lost. The noises are everywhere now, small lights pervade the darkness in strange patterns that serve only to blind you and confound you further. You hear one noise getting louder -- coming closer? Louder, louder, louder. You turn towards the source, but it seems to move all about you. The panic rises, and you bolt. Before you've gone two feet, a --crack-- resounds, and then again, --crack--.</p>
 		<p>Pain floods you. You look down, and you see...you've been shot. Badly. More shots ring out as you fall to your knees. It's all over, and you'll never even know why....</p>
-		<img src="dead2.jpg" />
+		<img src="images\dead2.jpg" />
 		<button restart>Maybe there's a better way...try again?</button>
 	</page>
 	
@@ -173,7 +173,7 @@ $("body").keypress(function( event ) {
 		<p>You don't have many options, though, so you keep going. The noises around you grow louder, and you begin to hear periodic crunching, as though the leaves around you are underfoot of numerous creatures bustling to and fro. It's growing dark, and the fear begins to rise within you. You slow to a crawl, peering around you as you plunge on.</p>
 		<p>Darkness finally falls, and you are well and truly lost. The noises are everywhere now, small lights pervade the darkness in strange patterns that serve only to blind you and confound you further. You hear one noise getting louder -- coming closer? Louder, louder, louder. You turn towards the source, but it seems to move all about you. The panic rises, and you bolt. Before you've gone two feet, a --crack-- resounds, and then again, --crack--.</p>
 		<p>Pain floods you. You look down, and you see...you've been shot. Badly. More shots ring out as you fall to your knees. It's all over, and you'll never even know why....</p>
-		<img src="dead2.jpg" />
+		<img src="images\dead2.jpg" />
 		<button restart>Maybe there's a better way...try again?</button>
 	</page>
 	
@@ -191,7 +191,7 @@ $("body").keypress(function( event ) {
 		<p>You don't have many options, though, so you keep going. The noises around you grow louder, and you begin to hear periodic crunching, as though the leaves around you are underfoot of numerous creatures bustling to and fro. It's growing dark, and the fear begins to rise within you. You slow to a crawl, peering around you as you plunge on.</p>
 		<p>Darkness finally falls, and you are well and truly lost. The noises are everywhere now, small lights pervade the darkness in strange patterns that serve only to blind you and confound you further. You hear one noise getting louder -- coming closer? Louder, louder, louder. You turn towards the source, but it seems to move all about you. The panic rises, and you bolt. Before you've gone two feet, a --crack-- resounds, and then again, --crack--.</p>
 		<p>Pain floods you. You look down, and you see...you've been shot. Badly. More shots ring out as you fall to your knees. It's all over, and you'll never even know why....</p>
-		<img src="dead2.jpg" />
+		<img src="images\dead2.jpg" />
 		<button restart>Maybe there's a better way...try again?</button>
 	</page>
 	
@@ -207,10 +207,10 @@ $("body").keypress(function( event ) {
 		<p>You use the few tools available to you in your current configuration to loop a viny plant around a sturdy-looking rock and tie it to a pair of sticks. It doesn't look like it will stand up to much, but you suppose it's better than running around unarmed.</p>
 		<p>After trudging a while longer through the woods in a futile attempt to find your original path, you see something gleaming just a bit ahead, behind a tree.</p>
 		<p>You approach slowly, carefully. In the darkw woods it is difficult to make out just what it is you're seeing...until it turns around.</p>
-		<img src="robot-face.jpg" />
+		<img src="images\robot-face.jpg" />
 		<p>A calm, humanoid, yet strangely uncanny face is watching you, its oddly vacant eyes staring deep. You both freeze -- or rather, you freeze, for its only moves seem to be very deliberate. Is this a true robot? Or just a very strange augment?</p>
 		<p>You watch each other for a moment, then you begin to creep away. It watches you silently, until finally you feel far enough away to turn around.</p>
-		<img src="dead2.jpg" />
+		<img src="images\dead2.jpg" />
 		<p>You were not far enough away. The creature has shot you, and you didn't even try to protect yourself.</p>
 		<p>As the world grows dark, all you see are its haunting eyes....</p>
 		<p>Well that was fun. Care to try again?</p>
@@ -256,7 +256,7 @@ $("body").keypress(function( event ) {
 		<p>A surprising amount of time passes before you reach a door -- a door that, astoundingly, opens as you near it. Whoever built this structure must not have expected anyone to find it.</p>
 		<p>You enter, and lights spring on, revealing a long hallway with doors sprouting at common intervals. These doors, however, all have locks -- all different locks, by the look of it. You wander down the hall, cautious but unable to resist. One door has a window near it, and you peek in. In it, you see a spider just like the one that confronted you. Actually, as you peer closer, you see there's more than one -- there are dozens, standing near one another in receding rows. They are unmoving, clearly powered down. Near the spiders are other automotons of unknown design and purpose. You shudder. "What possible purpose could this serve?" you wonder out loud.</p>
 		<p>"How kind of you to ask," a voice answers you.</p>
-		<img src="enemy.jpg" />
+		<img src="images\enemy.jpg" />
 		<p>You start, for the voice is the voice you heard as you entered the woods. You whirl about, and see the face of a severely augmented man who has just emerged from a nearby door.</p>
 		<p>"I've been watching you" says the man, "I set up that perimiter alarm specifically to keep nosey strangers like you away. Why did you ignore my warning and my sentry?"</p>
 		<p>"You sent the spider? -- yeah? Well, the woods are right near my house. Why shouldn't I wander? And the spider only made me more curious."</p>
@@ -286,7 +286,7 @@ $("body").keypress(function( event ) {
 		<p>You're quite sure. "I'm quite sure."</p>
 		<p>"That's really too bad. I was hoping to recruit your help, as a fellow man of technology. Well, unfortunately, if you won't help, that means you might betray my secrets before I am ready...goodbye, stranger, it has been interesting talking."</p>
 		<p>The man's yellow eyes glow, and shockwaves seem to leap forth from them. Your body feels warm, both cells and circuits overheating. You start to get woozy, and fall to the floor.</p>
-		<img src="man.png" />
+		<img src="images\man.png" />
 		<p>You are broken. The energy leaves your body and you start to fade. Perhaps you should have known a man such as this wouldn't let you leave so easily.</p>
 		<p>You are dead. Would you like to try again? Maybe you won't die this time (maybe).</p>
 		<button restart>Yes indeedy.</button>
@@ -311,7 +311,7 @@ $("body").keypress(function( event ) {
 	</page>
 	
 	<page fight-hands>
-		<img src="punch.png" />
+		<img src="images\punch.png" />
 		<p>You lash out with a fast haymaker and catch the man by surprise. He collapses, unconscious. "I guess he didn't think to reinforce his temples," you mutter. You stare down at his body for a moment. You could kill him here and now -- perhaps it would be the just thing to do. But is it ethical? You see him stirring, though, as you think, and realize you're running out of time. For lack of better options you back off and head for the nearest exit. Home isn't far away. In only an hour you've made it back to your house, where you contact the authorities. The next day, sounds of a great commotion seem to be coming from the woods. You don't see anything on the news about it, but a few days later a man in a dark suit and sunglasses comes to your door and thanks you -- your tip off helped prevent a major disaster.</p>
 		<p>You suppose that all's well that ends well. You never intended to get caught up in all that, but it worked out in the end. You can't help thinking about the future, though, and the kinds of advancements the man in the lab invented. You're glad he was stopped, but you feel some remorse at knowing the amazing technology that will never now see the light of day. For better or for worse, it's over, but maybe you'll start looking into some inventions of your own...the future is a wide-open place.</p>
 		<p>Congratulations! That was quite the victory. It's not the only kind of victory, however -- would you like to see if you can find some others?</p>
