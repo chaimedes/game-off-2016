@@ -13,7 +13,7 @@ $(".shell-body button").click(function(e) {
 $("body").keypress(function( event ) {
 	if ( event.which == 13 ) {
 		event.preventDefault();
-		$(".startit").trigger("click");
+		$(".startit").css("display", "block");
 		$("body").scrollTop($(".startit").offset().top + $(window).height());
 	}
 });
@@ -32,26 +32,23 @@ $("body").keypress(function( event ) {
 <story>
 	<div class="shell-body">
 	
-	<!-- Start -->
-	<page pre class="startpage">
+	<!-- L1 First scene -->
+	<page start>
 		<img src="intro1b.jpg" />
 		<p class="super">Welcome to Augments, a game of changes.</p>
-		<p>This game contains disturbing images and descriptions of violence; proceed at your own risk.</span></p>
+		<p>This game contains disturbing images and descriptions of violence; proceed at your own risk.</p>
 		<p>Press <span class="command">&ltenter&gt</span> to begin.</p>
-		<button choice start class="startit">Start</button>
+		<div class="startit">
+			<img src="forest.jpg" />
+			<p>It's a beautiful autumn day. You're walking alone through the woods, thinking.</p>
+			<p>Suddenly, you get an eerie feeling, and a voice speaks as if from nowhere, whispering "<span class="bloody">...go home, go home, go home...</span>"</p>
+			<p>Disembodied voices are creepy, but are they creepy enough to pay attention to?</p>
+			<button choice stay-put>I'm not leaving just because some random voice says to!</button>
+			<button choice go-home>I want to play it safe -- let's go home!</button>
+		</div>
 	</page>
 	
-	<!-- First scene -->
-	<page start>
-		<img src="forest.jpg" />
-		<p>It's a beautiful autumn day. You're walking alone through the woods, thinking.</p>
-		<p>Suddenly, you get an eerie feeling, and a voice speaks as if from nowhere, whispering "<span class="bloody">...go home, go home, go home...</span>"</p>
-		<p>Disembodied voices are creepy, but are they creepy enough to pay attention to?</p>
-		<button choice stay-put>I'm not leaving just because some random voice says to!</button>
-		<button choice go-home>I want to play it safe -- let's go home!</button>
-	</page>
-	
-	<!-- First scene => stay -->
+	<!-- L2 First scene => stay -->
 	<page stay-put>
 		<img src="spider.png" />
 		<p>Just as you decide not to leave, a giant, horrid, mechanical spider lunges out at you from behind a nearby bush.</p>	
@@ -59,7 +56,7 @@ $("body").keypress(function( event ) {
 		<button choice fight-spider>Fight him!</button>
 	</page>
 	
-	<!-- Stay => wait for spider -->
+	<!-- L3 First scene => stay => wait for spider -->
 	<page wait-spider>
 		<img src="dead1.jpg" />
 		<p>The horrible, deadly spider stabs at you with sharp mechanical pincers, slicing through your abdomin. You struggle, but bleed to death in moments.</p>
@@ -68,7 +65,7 @@ $("body").keypress(function( event ) {
 		<button restart>Would you care to try again?</button>
 	</page>
 	
-	<!-- Stay => fight spider -->
+	<!-- L3 First scene => stay => fight spider -->
 	<page fight-spider>
 		<img src="hand-point.png" />
 		<p>You raise your arm, ready to fire -- but suddenly realize your projectile arm is still at home, in your closet. You are unarmed. What should you do?</p>
@@ -76,7 +73,8 @@ $("body").keypress(function( event ) {
 		<button choice rock-spider>Pick up a nearby rock to throw -- gotta try something.</button>
 	</page>
 	
-	<!-- Fight spider => rock -->
+	<!-- L4 First scene => stay => fight spider => 
+	rock -->
 	<page rock-spider>
 		<event got-rock></event>
 		<p>You pick up a large rock nearby and prepare to heave it at the beast -- but as soon as the spider sees the rock, it flees, scurrying quickly through the brush down the path, soon veering off and crashing deep into the woods in the distance.</p>
@@ -86,17 +84,97 @@ $("body").keypress(function( event ) {
 		<button choice follow-spider>Follow the spider into the woods -- this isn't over!</button>
 	</page>
 	
-	<!-- Fight spider => rock => continue walk -->
-	<page rock-spider>
+	<!-- L5 First scene => stay => fight spider => 
+	rock => return home -->
+	<page return-home>
+		<p>You decide that you'll be better off if you head back home and return somewhat better prepared. At the very least that direction ought to be less dangerous than heading further into the woods.</p>
+		<p>But after just moments of walking, you start to hear noises from down the path, sounds of construction. Soon you see in the distance the bustle of numerous workers toiling. Uncertain of what to expect, you duck behind a tree for cover, crouch, and start moving closer. As you near, you observe a large barricade blocking the road, one that arose seemingly out of nowhere -- it certainly wasn't there when you came in just a little while ago!</p>
+		<p>The closer you get, the more impressive it appears. It seems to be constructed of a kind of fast-action concrete, with several paths and dividing barriers to make a kind of mini-fortress or above-ground trench. There must be at least a dozen people wandering about, builders, armed guards, and other miscellanious workers.</p>
+		<p>Clearly, people aren't supposed to get past it -- but it appears to be facing outward from the woods, as though to block people off from entering. If you want to, you can probably sneak through and get back out; it's not fully constructed yet, doesn't reach all the way into the woods, and everyone there seems to be busy. But is it safe?</p>
+		<button choice sneak-through>It's got to be safer than waiting -- sneak through.</button>
+		<button choice fight-guards>You can't sneak past all that. Fight your way through.</button>
+		<button choice wait-woods>Wait a while and see how things develop.</button>
 	</page>
 	
-	<!-- Fight spider => rock => follow-spider -->
-	<page rock-spider>
+	<!-- L6 First scene => stay => fight spider => 
+	rock => return home => sneak through -->
+	<page sneak-through>
+		<p>You wait for the voices of the guards to grow faint as they walk by, then creep forward carefully. Foot by foot, inch by inch, you work your way through the small maze of the barricade. As you near the entrance you notice something propped up against one of the walls of the barricade -- it is an augment!</p>
+		<p>Looking to both sides to make sure no one's near, you move closer. It is indeed an augment -- and a good one at that, clearly military grade, a projectile arm, probably meant for personal defense and one-on-one shootout scenarios. Very useful -- very hard to come by. Why would someone leave it lying around? One thing's for sure -- it won't be left unguarded for long.</p>
+		<p>You've been wandering these dangerous woods unarmed for a while now. Maybe it's a good idea to take it? It's certainly better quality than the one you have back at home. On the other hand, someone's bound to miss it, and it's probably not legal for you to use....</p>
+		<button choice steal-augment>Safety first. Take the augment.</button>
+		<button choice ignore-augment>Let it be and keep going.</button>
+	</page>
+	
+	<!-- L6 First scene => stay => fight spider => 
+	rock => return home => fight guards -->
+	<page fight-guards>
+		<p>Readying what fighting faculties you currently have, you launch yourself at the nearest guard, slamming him to the ground with your weight. Clambering over his body, you encounter two more guards closing in on you, with several only a few feet behind. Strength has always been an advantage you've held, and the heavy augments you have on don't hurt either -- as you swing and swing again, the guards go flying. They were clearly unprepared for such resistance from this side of the barricade.</p>
+		<condition got-augment>With your strength and the aid of your stolen augment, you wreak havoc in the barricade, and nearly reach the far wall.</p></condition>
+		<p>But a pair of workers some distance away has taken advantage of the tussle to ready a response -- a small projectile launcher has been rotated to face you, and now they fire it.</p>
+		<p>There is a dull "whump" as a grenade leaves the tube, strikes you, and detonates....</p>
+		<img src="fire.jpg" />
+		<p>You are dead (clearly).</p>
+		<button restart>Try again?</button>
+	</page>
+	
+	<!-- L6 First scene => stay => fight spider => 
+	rock => return home => wait in woods -->
+	<page wait-woods>
+		<p>You crouch there, under cover of the trees and bushes, and watch the workers at their fantastic construction. Clearly, the longer this goes on, the harder it's going to be to get through. Or maybe there's another way out?</p>
+		<p>As you ponder, you fail to observe that you have been noticed. A man wielding a strange, bulky device and a long, metal arm creeps up behind you. The last sound you hear is FWOOSH --</p>
+		<img src="fire.jpg" />
+		<p>Okay, maybe waiting was a poor choice in such dangerous woods.</p>
+		<button restart>Try again?</button>
+	</page>
+	
+	<!-- L5 First scene => stay => fight spider => 
+	rock => continue walk -->
+	<page continue-walk>	
+		<p>You are brave and fearless, and will not be turned away by such a trivial incident. Besides, your curiosity is piqued. You keep walking, resolved now to enjoy the hell out of your time in the woods, just to spite the spider and the voice -- </p>
+		<p>Speaking of voices, you notice that the voice is speaking again, softly this time, barely a whisper, like a tickle at the back of your neck, but no one is there. The voice is truly coming from the air itself, whispering: "Turn back...go home...no good lies this way."</p>
+		<p>Of course, this just makes you even more curious, so you call out -- "who are you?"</p>
+		<p>There is a pause. Then: "I am your best friend and your worst nightmare. I am the creator and destroyer of worlds. I am the face of the future. And I am telling you to leave!"</p>
+		<p>You're having none of it. This voice and its shenanigans are getting tiresome.</p>
+		<p>You can't decide if you're more aggravated or curious, though, which will decide whether you dive off further into the woods in search of the source of this voice, or stand your ground and curse it until it comes and finds you!</p>
+		<button choice curse-voice>Yell til the high heavens hear you.</button>
+		<button choice track-voice>Find that voice!</button>
+	</page>
+
+	<page track-voice>
+		<p>You strike off into the woods at a decent pace, determined to discover the root of this spectacle. After walking for some time, however, you realize you have lost your way -- you're definitely lost. The woods are denser here, little light gets through, and there are strange noises echoing softly from all directions.</p>
+		<p>You don't have many options, though, so you keep going. The noises around you grow louder, and you begin to hear periodic crunching, as though the leaves around you are underfoot of numerous creatures bustling to and fro. It's growing dark, and the fear begins to rise within you. You slow to a crawl, peering around you as you plunge on.</p>
+		<p>Darkness finally falls, and you are well and truly lost. The noises are everywhere now, small lights pervade the darkness in strange patterns that serve only to blind you and confound you further. You hear one noise getting louder -- coming closer? Louder, louder, louder. You turn towards the source, but it seems to move all about you. The panic rises, and you bolt. Before you've gone two feet, a --crack-- resounds, and then again, --crack--.</p>
+		<p>Pain floods you. You look down, and you see...you've been shot. Badly. More shots ring out as you fall to your knees. It's all over, and you'll never even know why....</p>
+		<img src="dead2.jpg" />
+		<button restart>Maybe there's a better way...try again?</button>
+	</page>
+	
+	<page curse-voice>
+		<p>You hurl a thousand curses into the crisp fall air, decrying the voice, its mystery, the spider, and all the craziness of the woods.</p>
+		<p>It seems, however, that this was a poor approach to take with an unknown power. Clouds gather, the sky darkens, and a vortex of wind and light come swirling down to surround you. The walls of the cyclone close in. You fight to penetrate through, to no avail. The ethereal voice laughs at your struggles as the swirling light and wind close in and all grows dark....</p>
+		<button restart>Ok, new plan. Try again?</button>
+	</page>
+	
+	<!-- L3 First scene => stay => fight spider => 
+	rock => follow-spider -->
+	<page follow-spider>
 		<p>You run down the path that the spider took, rock in hand. As you enter the more densely-wooded area, your shoulder tickles as your auto-lights click on. Good -- at least you didn't leave that at home.</p>
 		<p>The spider-thing can't be far ahead, but you see and hear nothing. You listen carefully, but without audio enhancement you know you don't have much chance of finding it now if it was moving fast.</p>
 		<p>You wander back on the main path, thinking. It was strange that the spider, huge, sturdy, and such an obvious threat to you while you're unarmed, would run from a rock. Regardless, it's strange that the woods had creatures such as these...mechanical pets are one thing, but crazy contraptions like that are usually in labs or museums. And then there's the voice...if it was real, did it tie in to the spider? But the spider seems not to have been much of a threat in the end...hm.</p>
-		<button choice go-home>There's too much strangeness here. Play it safe and go home.</button>
-		<button choice keep-walking>You need to figure things out. You keep walking, hoping to encounter some answers.</button>
+		<p>Maybe there's too much strangeness here, and you should just play it safe and go home. Or is it better to figure things out, to keep walking and hope you encounter some answers?</p>
+		<button choice go-home>Play it safe and go home.</button>
+		<button choice keep-walking>Keep walking.</button>
+	</page>
+	
+	<page keep-walking>	
+		<p>You are brave and fearless, and will not be turned away by such trivialities as dangerous giant mechanical spiders and ethereal voices warning of imminent doom. Besides, your curiosity is piqued. You keep walking</p>
+		<p>After walking for some time, however, you realize you have lost your way -- you're definitely lost. The woods are denser here, little light gets through, and there are strange noises echoing softly from all directions.</p>
+		<p>You don't have many options, though, so you keep going. The noises around you grow louder, and you begin to hear periodic crunching, as though the leaves around you are underfoot of numerous creatures bustling to and fro. It's growing dark, and the fear begins to rise within you. You slow to a crawl, peering around you as you plunge on.</p>
+		<p>Darkness finally falls, and you are well and truly lost. The noises are everywhere now, small lights pervade the darkness in strange patterns that serve only to blind you and confound you further. You hear one noise getting louder -- coming closer? Louder, louder, louder. You turn towards the source, but it seems to move all about you. The panic rises, and you bolt. Before you've gone two feet, a --crack-- resounds, and then again, --crack--.</p>
+		<p>Pain floods you. You look down, and you see...you've been shot. Badly. More shots ring out as you fall to your knees. It's all over, and you'll never even know why....</p>
+		<img src="dead2.jpg" />
+		<button restart>Maybe there's a better way...try again?</button>
 	</page>
 	
 	<!-- Fight spider => run -->
@@ -107,7 +185,7 @@ $("body").keypress(function( event ) {
 		<button choice scavenge-woods>Scavenge for something to use as a weapon.</button>
 	</page>
 	
-	<!-- Fight spider => run into woods => walk -->
+	<!-- Fight spider => run into woods => walk (END) -->
 	<page walk-woods>
 		<p>You strike off into the woods at a decent pace. You know you're not far into the woods, so you figure it shouldn't be far to the outside. After walking for some time, however, you realize you definitely went in the wrong direction. The woods are denser here, little light gets through, and there are strange noises echoing softly from all directions.</p>
 		<p>You don't have many options, though, so you keep going. The noises around you grow louder, and you begin to hear periodic crunching, as though the leaves around you are underfoot of numerous creatures bustling to and fro. It's growing dark, and the fear begins to rise within you. You slow to a crawl, peering around you as you plunge on.</p>
@@ -119,6 +197,57 @@ $("body").keypress(function( event ) {
 	
 	<!-- Fight spider => run into woods => scavenge weapon -->
 	<page scavenge-woods>
+		<p>You look around for any scraps of metal or other objects that you could use to fashion a weapon, but nothing obvious presents itself. You wander a bit, keeping your eye on the forest floor. Other than a few pointed rocks, there's nothing here that could really be useful against a giant monster like that.</p>
+		<p>Maybe you should at least tie a rock to a stick and be armed with <em>something</em>? Or is it better just to strike out and hope to get out of the woods before you run into something else?</p>
+		<button choice fashion-weapon>Some weapon is better than no weapon.</button>
+		<button choice go-straight>Just go home.</button>
+	</page>
+	
+	<page fashion-weapon>
+		<p>You use the few tools available to you in your current configuration to loop a viny plant around a sturdy-looking rock and tie it to a pair of sticks. It doesn't look like it will stand up to much, but you suppose it's better than running around unarmed.</p>
+		<p>After trudging a while longer through the woods in a futile attempt to find your original path, you see something gleaming just a bit ahead, behind a tree.</p>
+		<p>You approach slowly, carefully. In the darkw woods it is difficult to make out just what it is you're seeing...until it turns around.</p>
+		<img src="robot-face.jpg" />
+		<p>A calm, humanoid, yet strangely uncanny face is watching you, its oddly vacant eyes staring deep. You both freeze -- or rather, you freeze, for its only moves seem to be very deliberate. Is this a true robot? Or just a very strange augment?</p>
+		<p>You watch each other for a moment, then you begin to creep away. It watches you silently, until finally you feel far enough away to turn around.</p>
+		<img src="dead2.jpg" />
+		<p>You were not far enough away. The creature has shot you, and you didn't even try to protect yourself.</p>
+		<p>As the world grows dark, all you see are its haunting eyes....</p>
+		<p>Well that was fun. Care to try again?</p>
+		<button restart>Yes please.</button>
+	</page>
+	
+	<page go-straight>
+		<p>Thinking to try to find a way back home, you set off in one direction, figuring that if you walk in a straight line for long enough, you'll get somewhere or other.</p>
+		<p>Straight is exactly how you go -- straight into the back of another delightful creature...</p>
+		<img src="" />
+		<p>This new horrible monstrosity turns around, staring. And you thought the spider had been bad.</p>
+		<p>It starts for you, and you lash out in desperation, but your attacks do nothing. It quickly overpowers you, and slim but strong lashes fly out from one of its limbs, binding you. Helpless, you are lifted, carried on its back, taken deep into the woods to a strange building. Once inside, the creature dumps you wordlessly into a room filled with all sorts of motionless contraptions like itself. You call out questions as the creature leaves the room, but to no avail -- it doesn't even look back.</p>
+		<p>You can't imagine what is going on, but you figure you might soon find out more than you want to know....</p>
+		<p>After some time, the door opens and the light clicks on. There is a man standing there -- if indeed he can be called a man. He is so augmented as to be more machine than man, with glowing yellow eyes, protrusions of unknown utility on most of his limbs, and a metallic burnish to his skin.</p>
+		<p>"Ah, you are our 'wanderer'," he chuckles metallically. You narrow your eyes as your only response to such a strange line.</p>
+		<p>"I've been watching you" says the man, "I set up that perimiter alarm specifically to keep nosey strangers like you away. Why did you ignore my warning and my sentry?"</p>
+		<p>"You sent the spider? -- yeah? Well, the woods are right near my house. Why shouldn't I wander? And the spider only made me more curious."</p>
+		<p>The man sighs. "I should have expected as much from a fellow augment. Those who choose to enhance themselves are so often of the rash variety. At any rate...you are here, and you've asked about the purpose of this lab, so I'll tell you. I am building the future.</p>
+		<p>"You see I, like you, am a man who values the future. For decades I have followed the advancements of augmentation with gusto. Half a lifetime ago I was a simple businessman with a healthy interest in tech. When voluntary amputation and supplementation became legalized, I was one of the first to jump on the trend -- and realize its full potential. At the time, of course, augmentation was just a fad, most augments were for style, minor convenience, gadgetry like legs that could help you win a race or an enhanced eye for photography enthusiasts. But I knew better. I knew what augmentation could -- and would -- become. So I dedicated myself to the future, invested in augmentation, switched my focus in business, and soon was earning millions in this burgeoning new trend. But before long, I was stymied. The governments were putting limit after limit on the kinds of augmentation that were legal. Certain enhancements, they declared, were unnecessary or dangerous. Some, like projectile arms, required a permit and were restricted to certain areas. I could tell things were going downhill. The future of humanity does not lie in little trivial augmentations, but rather in the absolute supplementation of our own bodies -- a true mingling of biology and technology, surpassing our evolutionary limits and becoming true supermen.</p>
+		<p>"So I began to do my own research and development. I sunk millions of my own dollars into developing illegal but fantastic augmentations. That spider you discovered -- did you know there is a man in that? Well, not a whole man, but the brain of one, and several other organs besides. I have made augmentations you can hardly conceive of -- whole-body transformations that can be swapped out at a moment's notice, biological manipulations that allow the user to transform their own complection at a whim, computer interfaces that shuffle information between organism and technology as though they were one. I have built the future. All I await now is my opportunity to make the world aware of just how much it's missing."</p>
+		<p>"How can you possibly?" you ask. "Even leaving aside how unethical some of your creations probably are, it's so illegal that you're more likely to be put away for life than celebrated."</p>
+		<p>"Ahh. I see you underestimate my abilities. You do not realize the capabilities of my establishment, my creasions, and even myself -- for you see, I have enhanced myself, too, far more than you can possibly imagine. For instance --" he clapped, and from his hands sprang a fire that flew in mid-air, and as he moved his hands about, so to the fire moved, flew, transformed. He brought his hands together again and the fire vanished.</p>
+		<p>"And that is just one of the many, many abilities I have provided for myself. I alone could destroy a city or an army. Alongside my creations...I am unstoppable. The world will learn that it cannot prevent me from existing, and when it does, it will see the power of my inventions and clammer for them, yearn for a piece of the future I am creating here. I will be wealthy, oh so wealthy, and powerful besides -- even more so than now -- and the world will have the future it deserves."</p>
+		<p>Maybe it's the compromising position you're in, tied up on the floor, but you're starting to think the man has a point. His technology is impressive, and maybe it is the future. You offer to join him, thinking that your calm and objectivity could be the perfect pairing to his genius. Together, you can create something amazing. "I see your wisdom," you accede, "you really seem to be building something amazing. You know, I wouldn't mind getting in on that, if you're willing. I have some knowledge of technology myself, I could be pretty helpful."</p>
+		<p>"Oh good. I was hoping you'd offer," he laughs, "the only other alternative was to kill you! But I'd much rather have you on board. Come, let me tell you more of my...of <em>our</em> future."</p>
+		<p>An extension lashes out from his body and cuts the ropes that bind you. You stand up, stretching out your sore limbs. The man waits for you to find your feet, and then the two of you walk off, striding down the hall past all the rooms housing the technology of the future. You think of all the astounding things he's already accomplished, and how many more you can accomplish working together. A smile spreads on your face as you listen to him tell of his latest ideas. You have a feeling you've embarked on something wonderful. You're about to build the future, a WORLD OF AUGMENTATION.</p>
+		<p>-----</p>
+		<p>You've come to the conclusion of your journey. You've chosen a risky but fascinating path, full of hope for the future. Other potentials await you, though, along other paths of reasoning. Would you care to explore them?</p>
+		<button restart>Play again.</button>
+	</page>
+	
+	<page steal-augment>
+		<event got-augment></event>
+		<p>You grab the augment and inspect it more carefully. It looks to be in working order. Why someone would leave it lying around is beyond you, but now is not the time for such concerns. You're also uncomfortable discarding your current arm, but you figure if you hide it nearby you can always come back and reclaim it later. You grab the augment, dodge back into the woods for cover, and moments later are equipped with something more useful than an all-purpose convenience arm.</p>
+		<p>The question now is which way to go. You can turn back once more, now that you've got a way to defend yourself, and head into the woods to make sense of everything -- and finish your damn walk! Or you can finish heading back home in relative security.</p>
+		<button choice fight-guards>Let's go home.</button>
+		<button choice back-to-woods>Back to the woods!</button>
 	</page>
 	
 	<!-- Find lab -->
@@ -137,14 +266,13 @@ $("body").keypress(function( event ) {
 		<p>"How can you possibly?" you ask. "Even leaving aside how unethical some of your creations probably are, it's so illegal that you're more likely to be put away for life than celebrated."</p>
 		<p>"Ahh. I see you underestimate my abilities. You do not realize the capabilities of my establishment, my creasions, and even myself -- for you see, I have enhanced myself, too, far more than you can possibly imagine. For instance --" he clapped, and from his hands sprang a fire that flew in mid-air, and as he moved his hands about, so to the fire moved, flew, transformed. He brought his hands together again and the fire vanished.</p>
 		<p>"And that is just one of the many, many abilities I have provided for myself. I alone could destroy a city or an army. Alongside my creations...I am unstoppable. The world will learn that it cannot prevent me from existing, and when it does, it will see the power of my inventions and clammer for them, yearn for a piece of the future I am creating here. I will be wealthy, oh so wealthy, and powerful besides -- even more so than now -- and the world will have the future it deserves."</p>
-
-		<button choice fight-man>No way. This guy is crazy. He has to be stopped - somehow!</button>
-		<button choice run-man>No way. This guy is crazy. He has to be stopped - somehow!</button>
-		<button choice join-man>It might be hyperbole, but the man has a point. His technology is impressive, and maybe it is the future. You offer to join him, thinking that your calm and objectivity could be the perfect pairing to his genius. Together, you can create something amazing.</button>
+		<button choice fight-man>This guy is crazy. He has to be stopped - somehow!</button>
+		<button choice run-man>No way. I'm getting out of here.</button>
+		<button choice join-man>I kind of like the sound of this.</button>
 	</page>
 	
 	<page join-man>
-		<p>"I see your wisdom," you accede, "you really seem to be building something amazing. You know, I wouldn't mind getting in on that, if you're willing. I have some knowledge of technology myself, I could be pretty helpful."</p>
+		<p>It might be hyperbole, but the man has a point. His technology is impressive, and maybe it is the future. You offer to join him, thinking that your calm and objectivity could be the perfect pairing to his genius. Together, you can create something amazing. "I see your wisdom," you accede, "you really seem to be building something amazing. You know, I wouldn't mind getting in on that, if you're willing. I have some knowledge of technology myself, I could be pretty helpful."</p>
 		<p>"Oh good. I was hoping you'd offer," he laughs, "the only other alternative was to kill you! But I'd much rather have you on board. Come, let me tell you more of my...of <em>our</em> future."</p>
 		<p>You walk off with the man, striding down the hall past all the rooms housing the technology of the future, and you think of all the astounding things he's already accomplished, and how many more you can accomplish working together. A smile spreads on your face as you listen to him tell of his latest ideas. You have a feeling you've embarked on something wonderful. You're about to build the future, a WORLD OF AUGMENTATION.</p>
 		<p>-----</p>
@@ -153,7 +281,7 @@ $("body").keypress(function( event ) {
 	</page>
 	
 	<page run-man>
-		<p>You know you need to get out of here, away from this madness. You thank the man for his interesting story, and start to leave.<p>
+		<p>You know you need to get out of here, away from this madness. You thank the man for his interesting story, and start to leave.</p>
 		<p>"Oh no," the man says, "oh, no no no. That won't do. You can't leave, not now. Are you sure you wouldn't like to learn more?"</p>
 		<p>You're quite sure. "I'm quite sure."</p>
 		<p>"That's really too bad. I was hoping to recruit your help, as a fellow man of technology. Well, unfortunately, if you won't help, that means you might betray my secrets before I am ready...goodbye, stranger, it has been interesting talking."</p>
@@ -165,6 +293,7 @@ $("body").keypress(function( event ) {
 	</page>
 	
 	<page fight-man>
+		<p>This man is dangerous. His zany tirade made the hair on the back of your neck stand up. He needs to be stopped -- it's all up to you.</p>
 		<condition got-rock>
 			<button choice fight-rock>You still have that rock -- heave it at him!</button>
 		</condition>
@@ -174,81 +303,56 @@ $("body").keypress(function( event ) {
 		<button choice fight-hands>Anything is better than nothing, throw a punch!</button>
 	</page>
 	
-	<!-- 
-	     Stay -> 
-	     fight -> 
-		 rock -> 
-		 return -> 
-		 barricade -> 
-		 sneak through -> 
-		 steal augment -> 
-		 back to woods -> 
-		 find lab -> 
+	<page fight-augment>
+		<p>You raise your arm -- properly equipped, this time -- and take aim. But before the reticle can lock on, the man glares at you. His eyes gleam momentarily, and your projectile arm shatters, fragments falling to the floor.</p>
+		<p>You realize now it must be hopeless to fight him. This man has too much technology behind him. In desperation, you fling yourself at him, manage to strike his face a glancing blow just before his arm rips through your stomach, eviscerating you. You fall to the floor, energy seeping away. As you fade through your final moments, you see your killer gazing pensively at you, a strange look in his eyes. "Farewell," he says, "farewell."</p>
+		<p>It was worth a try, I guess. Would you like another go-around?</p>
+		<button restart>Let's do it.</button>
+	</page>
+	
+	<page fight-hands>
+		<img src="punch.png" />
+		<p>You lash out with a fast haymaker and catch the man by surprise. He collapses, unconscious. "I guess he didn't think to reinforce his temples," you mutter. You stare down at his body for a moment. You could kill him here and now -- perhaps it would be the just thing to do. But is it ethical? You see him stirring, though, as you think, and realize you're running out of time. For lack of better options you back off and head for the nearest exit. Home isn't far away. In only an hour you've made it back to your house, where you contact the authorities. The next day, sounds of a great commotion seem to be coming from the woods. You don't see anything on the news about it, but a few days later a man in a dark suit and sunglasses comes to your door and thanks you -- your tip off helped prevent a major disaster.</p>
+		<p>You suppose that all's well that ends well. You never intended to get caught up in all that, but it worked out in the end. You can't help thinking about the future, though, and the kinds of advancements the man in the lab invented. You're glad he was stopped, but you feel some remorse at knowing the amazing technology that will never now see the light of day. For better or for worse, it's over, but maybe you'll start looking into some inventions of your own...the future is a wide-open place.</p>
+		<p>Congratulations! That was quite the victory. It's not the only kind of victory, however -- would you like to see if you can find some others?</p>
+		<button restart>Let's do it.</button>
+	</page>
+	
+	<!-- Stay in woods -> 
+	     fight the spider -> 
+		 pick up the rock -> 
+		 return home -> 
+		 find the barricade -> 
+		 sneak through the barricade -> 
+		 steal the augment -> 
+		 back to the woods -> 
+		 find the lab -> 
 		 fight using rock 
 	-->
 	<page fight-rock>
-		<p></p>
-		<button choice run-spider>Take an educated guess and start walking.</button>
-		<button choice rock-spider>Scavange for something to use as a weapon.</button>
+		<p>You recall suddenly how scared the spider-creature was when you hefted that rock at it -- the rock you're still carrying! You lift it up, ready to heave. The man before you laughs scornfully.</p>
+		<p>"A rock? You threaten me with a rock? Do you still not comprehend my power?"</p>
+		<p>Suddenly you feel uncertain -- shouldn't this man know his own technology? -- but you're too far in; something must be done. With just a moment's pause, you fling the rock at the freakish augment.</p>
+		<p>He laughs again and makes to swat the rock away, but misses -- the rock itself seems to push his hand away as it nears. The man's eyes widen with shock as he watches this happen, and the rock continues unhindered, striking him in the neck.</p>
+		<p>His augmentations have provided him with a fair amount of armor, but you threw that rock hard. The man is propelled backward, and cracks appear in the metallic surface of his modified skin.</p>
+		<p>He glares at you and starts forward, but you quickly grab the rock up again and throw it before he can approach you. This time it strikes his face, and he staggers, blinded. You grab the rock once more and this time use it as a bludgeon, striking again and again until his dented, bleeding body lies motionless on the floor.</p>
+		<p>You didn't really mean to kill him, but maybe it's best that you did. In the hush after the action, you gently drop the rock and back away. It's time to get out of here.</p>
+		<p>On your way back home, you spend a lot of time thinking. Should you tell the authorities? Or let things be? If you do make it known, will you be implicated? Surely, someone will find the facility eventually no matter what you do.</p>
+		<p>And then there is the matter of the rock. Why would a simple rock cause such negative effects on such impressive technology? His augments must have been made of very different stuff, for no rock could effect even the simplest of augmentations that are found in every department store, much like the ones you wear right now. It is truly a puzzle, and not one you know how to answer.</p>
+		<p>Perhaps this will remain a mystery, or perhaps you will return someday to the lab and investigate. For now, you just want to clear your mind. You've had quite the day!</p>
+		<p>Well, that was interesting. It seems like you were successful, even if left with some unsolved mysteries for another day. There are other avenues, though, other possibilies and outcomes, should you wish to explore them....</p>
+		<button restart>Let's go exploring.</button>
 	</page>
 	
-<page go-home>
-<p>You returned home uneventfully.</p>
-<p>Well, you may never understand what happened in the woods today, but at least you're safe and sound!</p>
-<p>For now....</p>
-<button restart>Play again?</button>
-<button choice introduce>Introduce yourself.</button>
-<condition got-flute>
-<button choice play-flute>Play the flute.</button>
-</condition>
-</page>
-<page talk-to-owl>
-<p>For a while you talk to the owl. It seems to ignore you. Suddenly, it cocks its head towards a hollow in an old tree.</p>
-<p>You reach inside, and pull out a mysterious wooden flute.</p>
-<event got-flute></event>
-<p>"Hmm, now I've seen everything".</p>
-<button choice taunt-owl>I ought to taunt that preposterous owl.</button>
-<button choice look-around>Let's get moving.</button>
-</page>
-<page taunt-owl>
-<p>One thing about yourself that you know for sure - you hate owls/</p>
-<p>"Hey! Owl! You're stupid-looking!"</p>
-<p>The owl cocks its head at you bemusedly.</p>
-<p>What a stupid owl, you laugh.</p>
-<p>Suddenly, the owl swoops down and carries you off. It is a big owl indeed.</p>
-<p><i>You are never seen again.</i>
-</p>
-<button restart>Play again?</button>
-</page>
-<page investigate-rocks>
-<p>You walk up to the pile of rocks.</p>
-<p>It's just a pile of rocks, you think.</p>
-<button choice look-around>Let's get out of here.</button>
-</page>
-<page check-tree-out>
-<p>You walk up to the tree. You reckon it to be mighty old. Maybe a bazillion years or more. You notice a strange carving on the tree.</p>
-<p>The carving depicts a great monster, twenty feet tall or more.</p>
-<p>"Pshh. A huge monster, have you ever heard anything so ridiculous, Smeemog? ... Smee?"</p>
-<p>You turn around, but in fact Smeemog has been eaten by a giant monster.</p>
-<p>The monster devours you as you beg for mercy.</p>
-<button restart>Play again?</button>
-</page>
-<page play-flute>
-<p>You play the flute, and the troll disappears in a cloud of smoke.</p>
-<p>"I'll get you, Owl!" he curses.</p>
-<p>You and Smeemog escape the forest safely.</p>
-<p><i>You win!</i>
-</p>
-<button restart>Play again?</button>
-</page>
-<page introduce>
-<p>"It is we," you say.</p>
-<p>"I care not who ye are! I demand yer bones as payment for trespassin'."</p>
-<p><i>You're boned!</i>
-</p>
-<button restart>Play again?</button>
-</page>  
-</div>      
+	<page go-home>
+		<p>You returned home uneventfully.</p>
+		<p>Well, you may never understand what happened in the woods today, but at least you're safe and sound!</p>
+		<p>For now....</p>
+		<button restart>Play again?</button>
+	</page>
+	
+	</div>
+	
 </story>
 </div>
 </body>
