@@ -15,7 +15,9 @@ To make things a bit more visual for a modern audience, buttons are generally us
 Please enjoy!
 
 ## How do you play?
-Everything you need to play this game is within this repo. It is straighforward javascript, so no preparations are necessary -- once you have the files, load up the base directory in your browser and you're good to go!
+Everything you need to play this game is within this repo. It is non-compiled javascript, so no preparations are necessary -- once you have the files, load up the base directory in your browser and you're good to go!
+
+I'm also currently hosting the game at http://mberlove.com/proj/game-off-2016/.
 
 Gameplay itself is straightfoward -- press `ENTER` to start, then at each decision point, click the button that corresponds to the choice you want to make, and watch the plot unfold. There are no checkpoints, so think carefully! And remember that the fun is in exploring.
 
